@@ -15,7 +15,11 @@ def clean_reviews(x):
 df_20['review_count'] = df_20['review_count'].apply(clean_reviews)
 df_20['employee_count'] = df_20['employees'].str.extract(r'(\d+)').astype(float)
 
-# Line Chart
-plt.plot(df_20['name'], df_20['employee_count'], marker='o')
-plt.xticks(rotation=90)
-plt.show()
+# Top HQ
+
+print("\nTop 10 Companies with Headquarters:\n")
+
+top_10 = df_20[['name', 'hq']].head(10)
+
+for index, row in top_10.iterrows():
+    print(f"{row['name']}  -->  {row['hq']}")

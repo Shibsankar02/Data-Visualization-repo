@@ -15,7 +15,6 @@ def clean_reviews(x):
 df_20['review_count'] = df_20['review_count'].apply(clean_reviews)
 df_20['employee_count'] = df_20['employees'].str.extract(r'(\d+)').astype(float)
 
-# Line Chart
-plt.plot(df_20['name'], df_20['employee_count'], marker='o')
-plt.xticks(rotation=90)
+# Pie Chart
+df_20['years'].value_counts().plot.pie(autopct='%1.1f%%')
 plt.show()

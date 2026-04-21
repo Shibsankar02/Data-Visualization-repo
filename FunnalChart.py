@@ -15,7 +15,8 @@ def clean_reviews(x):
 df_20['review_count'] = df_20['review_count'].apply(clean_reviews)
 df_20['employee_count'] = df_20['employees'].str.extract(r'(\d+)').astype(float)
 
-# Line Chart
-plt.plot(df_20['name'], df_20['employee_count'], marker='o')
-plt.xticks(rotation=90)
+# Funnel (Barh)
+df_20.sort_values(by='review_count', ascending=False)\
+    .plot.barh(x='name', y='review_count')
+plt.gca().invert_yaxis()
 plt.show()
